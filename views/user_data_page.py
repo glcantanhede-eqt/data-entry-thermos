@@ -42,7 +42,7 @@ with col1:
         placeholder="Selecione uma opção",
         key='_business'
     )
-    st.markdown(f"Empresa selecionada: :green[{curr_business}]")
+    st.markdown(f"Empresa selecionada: :green[{st.session_state['_business']}]")
     
 with col2:
     opt_place = st.selectbox(
@@ -52,7 +52,7 @@ with col2:
         placeholder="Selecione uma opção",
         key='_place'
         )
-    st.markdown(f"Praça selecionada: :green[{curr_place}]")
+    st.markdown(f"Praça selecionada: :green[{st.session_state['_place']}]")
 
 
 
