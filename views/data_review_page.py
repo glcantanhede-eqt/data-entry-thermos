@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 from st_supabase_connection import SupabaseConnection
 import plotly.express as ex
+import plotly.graph_objects as go
+
+#### Importing custom styling into the page 
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -50,14 +53,15 @@ if 'user_data' in st.session_state.keys():
     styled_val_press = pick_color(val_fav[0])
     #st.markdown(styled_val_press, unsafe_allow_html=True)
     #str_fav = f"<h1 style='color: {styled_val_press};'>{val_fav[0]*100:.2f}</h1> %"
-
+    val_overall = (val_saud + val_fav) / 2
+    styled_val_overall = pick_color(val_overall[0])
          
 
 #conn = st.connection("supabase", type=SupabaseConnection)
 
 try:
     user_fstring = f"""
-    ## Dados do Usuário
+    ## :bust_in_silhouette: Dados do Usuário
     + **Matrícula**: {user_data['id_user'][0]} 
     + **Email**: {user_data['email'][0]}
     + **Empresa**: {user_data['business'][0]}
@@ -65,7 +69,7 @@ try:
     """
     st.markdown(user_fstring)
 
-    st.markdown("## Digital")
+    st.markdown("## :iphone: Digital")
     col1, col2 = st.columns([0.4, 0.6], vertical_alignment='center')
     with col1:
         st.markdown("**Quantidade de Menções**")
@@ -75,7 +79,7 @@ try:
         st.markdown(f"<h1 style='color:{styled_val_dig}'>{val_saud[0]*100:.2f} %</h1>",unsafe_allow_html=True)
     
     
-    st.markdown("## Imprensa")
+    st.markdown("## :newspaper: Imprensa")
     col3, col4 = st.columns([0.4, 0.6], vertical_alignment='center')
     with col3:
         st.markdown("**Quantidade de Notícias**")
@@ -84,7 +88,12 @@ try:
         st.markdown("**Favorabilidade**")
         st.markdown(f"<h1 style='color:{styled_val_press}'>{val_fav[0]*100:.2f} %</h1>",unsafe_allow_html=True)
 
-
+    col5, col6 = st.columns([0.4, 0.6], vertical_alignment='center')
+    with col5:
+        st.markdown("## :thermometer: Como estamos hoje?")
+    with col6:
+        st.markdown(f"<h1 style='color:{styled_val_overall}'>{val_overall[0]*100:.2f} %</h1>",unsafe_allow_html=True)
+    
 
     check_ok = st.checkbox("Eu li os dados acima e confirmei que estão corretos.")
     if check_ok:
