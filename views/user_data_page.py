@@ -1,9 +1,8 @@
 import streamlit as st
-import time
-from control.misc_funcs import showProgressBar
+# from control.misc_funcs import showProgressBar
 
 ## Data Entry Class ##
-from model.data_entry import Data_Entry
+# from model.data_entry import Data_Entry
 
 
 
@@ -24,35 +23,35 @@ else:
     curr_place = None
 
 #######
+with st.container(border=True):
+    id_user = st.number_input("Insira sua matrícula (apenas números)", value = curr_id, format="%i", key='_id_user')
 
-id_user = st.number_input("Insira sua matrícula (apenas números)", value = curr_id, format="%i", key='_id_user')
-
-email_user = st.text_input("Insira seu email institucional", value = curr_email, key='_email')
-# regex_email = r"^\S+@\S+$"
+    email_user = st.text_input("Insira seu email institucional", value = curr_email, key='_email')
+    # regex_email = r"^\S+@\S+$"
 
 
-#TODO include user email var, with email validation. 
+    #TODO include user email var, with email validation. 
 
-col1, col2 = st.columns(2)
-with col1:
-    opt_business = st.selectbox(
-        "Selecione sua Empresa:",
-        ("Distribuição", "Saneamento", "Serviços", "Eólica", "Solar"),
-        index=None,
-        placeholder="Selecione uma opção",
-        key='_business'
-    )
-    st.markdown(f"Empresa selecionada: :green[{st.session_state['_business']}]")
-    
-with col2:
-    opt_place = st.selectbox(
-        "Selecione sua Praça:",
-        ("AL", "AP", "GO", "MA", "PA", "PI", "RS"),
-        index=None,
-        placeholder="Selecione uma opção",
-        key='_place'
+    col1, col2 = st.columns(2)
+    with col1:
+        opt_business = st.selectbox(
+            "Selecione sua Empresa:",
+            ("Distribuição", "Saneamento", "Serviços", "Eólica", "Solar"),
+            index=None,
+            placeholder="Selecione uma opção",
+            key='_business'
         )
-    st.markdown(f"Praça selecionada: :green[{st.session_state['_place']}]")
+        st.markdown(f"Empresa selecionada: :green[{st.session_state['_business']}]")
+        
+    with col2:
+        opt_place = st.selectbox(
+            "Selecione sua Praça:",
+            ("AL", "AP", "GO", "MA", "PA", "PI", "RS", "SP"),
+            index=None,
+            placeholder="Selecione uma opção",
+            key='_place'
+            )
+        st.markdown(f"Praça selecionada: :green[{st.session_state['_place']}]")
 
 
 
@@ -69,10 +68,9 @@ if save_user_button:
         'place': st.session_state['_place']
     }
 
-#####
-st.markdown("-----")
 
 #### Navigation buttons ###
+# st.markdown("-----")
 nav_prev, nav_next = st.columns(2, vertical_alignment='bottom')
 with nav_prev:
     st.page_link("views/landing_page.py", label="Voltar")

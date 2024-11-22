@@ -10,21 +10,18 @@ else:
     curr_press_positive = 0
     curr_press_negative = 0
 
+with st.container(border=True):
+    # Data entry part for Press media
+    col1, col2 = st.columns(2)
+    #Positive mentions
+    with col1:
+        press_positive = st.number_input("**Quantidade de :green-background[Notícias Positivas]**", value=curr_press_positive, format="%d", key='_press_pos')
+        st.write("Positivas:", press_positive)
 
-# Data entry part for Press media
-col1, col2 = st.columns(2)
-#Positive mentions
-with col1:
-    press_positive = st.number_input("**Quantidade de :green-background[Notícias Positivas]**", value=curr_press_positive, format="%d", key='_press_pos')
-    st.write("Positivas:", press_positive)
-
-#Negative mentions
-with col2:
-    press_negative = st.number_input("**Quantidade de :red-background[Notícias Negativas]**", value=curr_press_negative, format="%d", key='_press_neg')
-    st.write("Negativas:", press_negative)
-
-
-#TODO SHOW THE CALCULATIONS AUTOMATICALLY
+    #Negative mentions
+    with col2:
+        press_negative = st.number_input("**Quantidade de :red-background[Notícias Negativas]**", value=curr_press_negative, format="%d", key='_press_neg')
+        st.write("Negativas:", press_negative)
 
 
 mask_show_button = not(press_positive and press_negative)
@@ -39,8 +36,7 @@ if save_press:
 
 
 #### Navigation buttons ###
-
-st.markdown("-----")
+# st.markdown("-----")
 nav_prev, nav_next = st.columns(2, vertical_alignment='bottom')
 with nav_prev:
     st.page_link("views/digital_mentions_page.py", label="Voltar")

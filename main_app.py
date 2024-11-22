@@ -12,7 +12,8 @@ with open('style.css') as f:
 pages = {
     "Início":[
         st.Page("./views/landing_page.py", title="Instruções", default=True, icon='📖'),
-        st.Page("./views/user_data_page.py", title="Dados do Usuário", icon='👤'),
+        st.Page("./views/user_login.py", title="Login de Usuário", icon='👤'),
+        # st.Page("./views/user_create.py", title="Cadastrar Usuário", icon='👤'),
         ],
     "Dados do Termômetro": [
         st.Page("./views/digital_mentions_page.py", title="Digital", icon='📱'),
