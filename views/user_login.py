@@ -8,6 +8,7 @@ if "__conn" not in st.session_state:
     st.session_state['__conn'] = conn
 else:
     conn = st.session_state['__conn']
+
 curr_user = conn.auth.get_user()
 if curr_user:
     st.write(f"## Bem vindo(a), :blue[{curr_user.user.user_metadata["first_name"]}]!")
@@ -27,7 +28,8 @@ else:
         if btn_login:
             try:
                 response = conn.auth.sign_in_with_password(dict(email=email_user, password=pwd_user))
-                response
+                st.write(f"## Bem vindo(a), :blue[{response.user.user_metadata["first_name"]}]!")
+                st.session_state['__conn'] = conn
             except Exception as e:
                 st.write("Erro ao tentar fazer login")
                 e

@@ -11,3 +11,11 @@ def showProgressBar():
     sleep(1)
     my_bar.progress(100, text="Operação concluída com sucesso!")
     sleep(0.1)
+
+def pick_color(value):
+    if value < 0.36:
+        return "#eb4034" #style.format(color_pick="#eb4034")
+    elif value < 0.71:
+        return "#ffaa00" #style.format(color_pick="#ffaa00")
+    else:
+        return "#00b509" #style.format(color_pick="#00b509")

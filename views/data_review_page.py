@@ -3,6 +3,7 @@ import pandas as pd
 # from supabase import create_client, Client
 # from supabase.lib.client_options import ClientOptions
 import control.db_connection as dbc
+import control.misc_funcs as misc
 import json
 
 conn = None
@@ -40,27 +41,17 @@ else:
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-### Help Funcs
-def pick_color(value):
-    if value < 0.36:
-        return "#eb4034" #style.format(color_pick="#eb4034")
-    elif value < 0.71:
-        return "#ffaa00" #style.format(color_pick="#ffaa00")
-    else:
-        return "#00b509" #style.format(color_pick="#00b509")
 
-
-### Data Entry sanity check ###
-curr_user = conn.auth.get_user()
-user_data = None
-if curr_user:
+### Fetching metadata from the logged user
+try:
+    curr_user = conn.auth.get_user()
     user_data = curr_user.user.user_metadata
-    user_data
+except:
+    st.write("Erro ao recuperar dados do usuário, tente logar novamente.")
 
-
+### Handling the thermometer data 
 if 'text_warn' in st.session_state.keys():
     # Transforming and storing the data in adequate variables
-    # user_data = pd.DataFrame.from_dict(data=st.session_state['user_data'], orient='index').T
     dig_mentions = pd.DataFrame.from_dict(data=st.session_state['dig_mentions'], orient='index').T 
     press_mentions = pd.DataFrame.from_dict(data=st.session_state['press_mentions'], orient='index').T
     text_pos = st.session_state['text_pos']
@@ -68,19 +59,20 @@ if 'text_warn' in st.session_state.keys():
 
     # Calculating the saudability and configuring the string format
     val_saud = (dig_mentions[['dig_pos', 'dig_neu']].T.sum()/dig_mentions.T.sum())*100
-    styled_val_dig = pick_color(val_saud[0])
+    styled_val_dig = misc.pick_color(val_saud[0])
 
     # Calculating the favorability and configuring the string format
     val_fav = (press_mentions['press_pos'].T.sum()/press_mentions.T.sum())*100
-    styled_val_press = pick_color(val_fav[0])
+    styled_val_press = misc.pick_color(val_fav[0])
 
     # Calculating the overall favorability for the brand
     val_overall = ((val_saud + val_fav) / 2 )
-    styled_val_overall = pick_color(val_overall[0])
+    styled_val_overall = misc.pick_color(val_overall[0])
 
     # Preparing the dict to be inserted
     dict_insert = dict(
-                id_user = user_data['id_user'],
+                uuid = curr_user.user.id,
+                worker_id = user_data['id_user'],
                 email = user_data['email'],
                 business = user_data['business'],
                 place = user_data['place'],
@@ -95,8 +87,6 @@ if 'text_warn' in st.session_state.keys():
                 saudability = val_saud[0], 
                 overall_fav = val_overall[0])
          
-
-#conn = st.connection("supabase", type=SupabaseConnection)
 
 try:
     with st.container(border=True):
@@ -145,9 +135,8 @@ try:
         button_submit = st.button("Enviar")
         # connecting to supabase and inserting data if the button is pressed
         if button_submit:
-            rows = run_insert('raw_data', dict_insert)
-            if rows.data:
-                st.success("Dados enviados com sucesso!")
+            rows = dbc.run_insert(conn,'raw_data', dict_insert)
+            st.success("Dados enviados com sucesso!")
 
 except Exception as ex:
     st.write("Erro ao processar dados, tente novamente.")
