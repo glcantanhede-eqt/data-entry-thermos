@@ -9,6 +9,9 @@ if "__conn" not in st.session_state:
 else:
     conn = st.session_state['__conn']
 
+if "ts_start" not in st.session_state.keys():
+    st.session_state["ts_start"] = str(datetime.now(tz=timezone.utc))
+
 curr_user = conn.auth.get_user()
 if curr_user:
     st.write(f"## Bem vindo(a), :blue[{curr_user.user.user_metadata["first_name"]}]!")

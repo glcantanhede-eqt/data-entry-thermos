@@ -5,6 +5,11 @@ import control.misc_funcs as misc
 from datetime import datetime, tzinfo
 import json
 
+ts_start = None
+if 'ts_start' in st.session_state.keys():
+    ts_start = st.session_state.ts_start
+elif 'ts_start' in st.session_state.keys():
+    ts_start = st.session_state.ts_landing
 
 conn = None
 if "__conn" not in st.session_state:
@@ -13,6 +18,7 @@ if "__conn" not in st.session_state:
 else:
     conn = st.session_state['__conn']
 
+timestamp_start = st.session_state["__timestart"]
 
 #### Importing custom styling into the page 
 
@@ -64,7 +70,7 @@ if 'text_warn' in st.session_state.keys():
                 favorability = val_fav[0], 
                 saudability = val_saud[0], 
                 overall_fav = val_overall[0],
-                started_at = st.session_state["__timestart"]
+                started_at = ts_start
                 )
          
 
