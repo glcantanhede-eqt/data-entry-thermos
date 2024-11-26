@@ -70,45 +70,47 @@ if 'text_warn' in st.session_state.keys():
 
 try:
     with st.container(border=True):
-        user_fstring = f"""
-        ## :bust_in_silhouette: Dados do Usuário
-        + **Matrícula**: {user_data['id_user']} 
-        + **Email**: {user_data['email']}
-        + **Empresa**: {user_data['business']}
-        + **Praça**: {user_data['place']}
-        """
-        st.markdown(user_fstring)
-
-        st.markdown("## :iphone: Digital")
-        col1, col2 = st.columns([0.7, 0.3], vertical_alignment='center')
-        with col1:
-            st.markdown("**Quantidade de Menções**")
-            st.dataframe(dig_mentions, column_config={'dig_pos':'Positivas', 'dig_neu':'Neutras', 'dig_neg':'Negativas'}, hide_index=True)
-        with col2:
-            st.markdown("**Saudabilidade**")
-            st.markdown(f"<h1 style='color:{styled_val_dig}'>{val_saud[0]:.2f} %</h1>",unsafe_allow_html=True)
+        with st.container(border=True):
+            user_fstring = f"""
+            ## :bust_in_silhouette: Dados do Usuário
+            + **Matrícula**: {user_data['id_user']} 
+            + **Email**: {user_data['email']}
+            + **Empresa**: {user_data['business']}
+            + **Praça**: {user_data['place']}
+            """
+            st.markdown(user_fstring)
+        with st.container(border=True):
+            st.markdown("## :iphone: Digital")
+            col1, col2 = st.columns([0.7, 0.3], vertical_alignment='center')
+            with col1:
+                st.markdown("**Quantidade de Menções**")
+                st.dataframe(dig_mentions, column_config={'dig_pos':'Positivas', 'dig_neu':'Neutras', 'dig_neg':'Negativas'}, hide_index=True)
+            with col2:
+                st.markdown("**Saudabilidade**")
+                st.markdown(f"<h1 style='color:{styled_val_dig}'>{val_saud[0]:.2f} %</h1>",unsafe_allow_html=True)
+            
+            st.markdown(f":green-background[Pontos Positivos: {text_pos['dig']}]")
+            st.markdown(f":orange-background[Pontos de Atenção: {text_warn['dig']}]")
         
-        st.markdown(f":green-background[Pontos Positivos: {text_pos['dig']}]")
-        st.markdown(f":orange-background[Pontos de Atenção: {text_warn['dig']}]")
-        
-        st.markdown("## :newspaper: Imprensa")
-        col3, col4 = st.columns([0.7, 0.3], vertical_alignment='center')
-        with col3:
-            st.markdown("**Quantidade de Notícias**")
-            st.dataframe(press_mentions, column_config={'press_pos':'Positivas', 'press_neg':'Negativas'}, hide_index=True)
-        with col4:
-            st.markdown("**Favorabilidade**")
-            st.markdown(f"<h1 style='color:{styled_val_press}'>{val_fav[0]:.2f} %</h1>",unsafe_allow_html=True)
+        with st.container(border=True):    
+            st.markdown("## :newspaper: Imprensa")
+            col3, col4 = st.columns([0.7, 0.3], vertical_alignment='center')
+            with col3:
+                st.markdown("**Quantidade de Notícias**")
+                st.dataframe(press_mentions, column_config={'press_pos':'Positivas', 'press_neg':'Negativas'}, hide_index=True)
+            with col4:
+                st.markdown("**Favorabilidade**")
+                st.markdown(f"<h1 style='color:{styled_val_press}'>{val_fav[0]:.2f} %</h1>",unsafe_allow_html=True)
 
-        st.markdown(f":green-background[Pontos Positivos: {text_pos['press']}]")
-        st.markdown(f":orange-background[Pontos de Atenção: {text_warn['press']}]")
-
-        col5, col6 = st.columns([0.7, 0.3], vertical_alignment='center')
-        with col5:
-            st.markdown("## :thermometer: Como estamos hoje?")
-        with col6:
-            st.markdown(f"<h1 style='color:{styled_val_overall}'>{val_overall[0]:.2f} %</h1>",unsafe_allow_html=True)
-        
+            st.markdown(f":green-background[Pontos Positivos: {text_pos['press']}]")
+            st.markdown(f":orange-background[Pontos de Atenção: {text_warn['press']}]")
+        with st.container(border=True):
+            col5, col6 = st.columns([0.7, 0.3], vertical_alignment='center')
+            with col5:
+                st.markdown("## :thermometer: Como estamos hoje?")
+            with col6:
+                st.markdown(f"<h1 style='color:{styled_val_overall}'>{val_overall[0]:.2f} %</h1>",unsafe_allow_html=True)
+            
 
     check_ok = st.checkbox("Eu li os dados acima e confirmei que estão corretos.")
     if check_ok:
@@ -117,6 +119,7 @@ try:
         if button_submit:
             rows = dbc.run_insert(conn,'raw_data', dict_insert)
             st.success("Dados enviados com sucesso!")
+        conn.auth.sign_out()
 
 except Exception as ex:
     st.write("Erro ao processar dados, tente novamente.")
