@@ -2,13 +2,11 @@ import streamlit as st
 import pandas as pd
 import control.db_connection as dbc
 import control.misc_funcs as misc
-from datetime import datetime, tzinfo
-import json
 
 ts_start = None
 if 'ts_start' in st.session_state.keys():
     ts_start = st.session_state.ts_start
-elif 'ts_start' in st.session_state.keys():
+elif 'ts_landing' in st.session_state.keys():
     ts_start = st.session_state.ts_landing
 
 conn = None
@@ -18,7 +16,6 @@ if "__conn" not in st.session_state:
 else:
     conn = st.session_state['__conn']
 
-timestamp_start = st.session_state["__timestart"]
 
 #### Importing custom styling into the page 
 
@@ -27,8 +24,11 @@ with open('style.css') as f:
 
 
 ### Fetching metadata from the logged user
+curr_user = None
+user_data = None
 try:
     curr_user = conn.auth.get_user()
+    st.write(curr_user.user)
     user_data = curr_user.user.user_metadata
 except:
     st.write("Erro ao recuperar dados do usuário, tente logar novamente.")
@@ -124,8 +124,8 @@ try:
         # connecting to supabase and inserting data if the button is pressed
         if button_submit:
             rows = dbc.run_insert(conn,'raw_data', dict_insert)
-            st.success("Dados enviados com sucesso!")
-        conn.auth.sign_out()
+            st.success("Dados enviados com sucesso! Você já pode fechar esta página.")
+        #conn.auth.sign_out()
 
 except Exception as ex:
     st.write("Erro ao processar dados, tente novamente.")
