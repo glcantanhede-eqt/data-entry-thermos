@@ -1,6 +1,6 @@
 import streamlit as st
 import control.db_connection as dbc
-
+import time
 
 conn = None
 if "__conn" not in st.session_state:
@@ -28,6 +28,7 @@ else:
         if btn_login:
             try:
                 response = conn.auth.sign_in_with_password(dict(email=email_user, password=pwd_user))
+                time.sleep(3)
                 st.write(f"## Bem vindo(a), :blue[{response.user.user_metadata["first_name"]}]!")
                 st.session_state['__conn'] = conn
             except Exception as e:

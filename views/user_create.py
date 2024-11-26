@@ -1,15 +1,9 @@
 import streamlit as st
-# from supabase import create_client, Client
 import control.db_connection as dbc 
 import json
 
-# # Initialize connection.
-# @st.cache_resource
-# def init_connection():
-#     opts = ClientOptions().replace(schema="data_entry")
-#     url = st.secrets["SUPABASE_URL"]
-#     key = st.secrets["SUPABASE_KEY"]
-#     return create_client(url, key, options=opts)
+
+####################### TODO Think about moving this to another app, detached from the data entry app! #############################
 
 conn = dbc.init_connection()
 

@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
-# from supabase import create_client, Client
-# from supabase.lib.client_options import ClientOptions
 import control.db_connection as dbc
 import control.misc_funcs as misc
+from datetime import datetime, tzinfo
 import json
+
 
 conn = None
 if "__conn" not in st.session_state:
@@ -12,28 +12,6 @@ if "__conn" not in st.session_state:
     st.session_state['__conn'] = conn
 else:
     conn = st.session_state['__conn']
-
-# @st.cache_resource
-# def init_connection():
-#     opts = ClientOptions().replace(schema="data_entry")
-#     url = st.secrets["SUPABASE_URL"]
-#     key = st.secrets["SUPABASE_KEY"]
-#     return create_client(url, key, options=opts)
-
-# with st.spinner("Processando dados..."):
-# # Intializing connection
-#     conn = init_connection()
-
-# Perform query.
-# Uses st.cache_data to only rerun when the query changes or after 10 min.
-# @st.cache_resource(ttl=600)
-# def run_select(conn,_table_name, atributes):
-#     return conn.table(_table_name).select(atributes).execute()
-
-
-# @st.cache_resource(ttl=600)
-# def run_insert(_table_name, values):
-#     return conn.table(_table_name).insert(values).execute()
 
 
 #### Importing custom styling into the page 
@@ -85,7 +63,9 @@ if 'text_warn' in st.session_state.keys():
                 text_warn = str(text_warn),
                 favorability = val_fav[0], 
                 saudability = val_saud[0], 
-                overall_fav = val_overall[0])
+                overall_fav = val_overall[0],
+                started_at = st.session_state["__timestart"]
+                )
          
 
 try:
