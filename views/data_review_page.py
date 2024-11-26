@@ -28,7 +28,6 @@ curr_user = None
 user_data = None
 try:
     curr_user = conn.auth.get_user()
-    st.write(curr_user.user)
     user_data = curr_user.user.user_metadata
 except:
     st.write("Erro ao recuperar dados do usuário, tente logar novamente.")
