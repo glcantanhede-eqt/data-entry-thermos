@@ -10,7 +10,7 @@ st.markdown("# :thermometer: :blue[Bem vindo ao Termômetro Reputacional do Grup
 
 with st.container(border=True):
     st.markdown("""Insira os dados em seus respectivos campos, conforme o fluxo deste formulário.
-    **Tenha atenção extra ao inserir os dados numéricos,**,
+    **Tenha atenção extra ao inserir os dados numéricos**,
     do contrário os cálculos do termômetro serão afetados. """)
 
 #### Navigation buttons ###
