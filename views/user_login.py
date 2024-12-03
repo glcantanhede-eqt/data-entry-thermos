@@ -41,10 +41,10 @@ else:
                 e
 
 
-#### Navigation buttons ###
-# st.markdown("-----")
-nav_prev, nav_next = st.columns(2, vertical_alignment='bottom')
-with nav_prev:
-    st.page_link("views/landing_page.py", label="Voltar")
-with nav_next:
-    st.page_link("views/digital_mentions_page.py", label="Avançar",)
+            #### Navigation buttons ###
+            # st.markdown("-----")
+            nav_prev, nav_next = st.columns(2, vertical_alignment='bottom')
+            with nav_prev:
+                st.page_link("views/landing_page.py", label="Voltar")
+            with nav_next:
+                st.page_link("views/digital_mentions_page.py", label="Avançar",)

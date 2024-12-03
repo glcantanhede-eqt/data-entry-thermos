@@ -42,10 +42,10 @@ if save_dig:
     }
 
 
-#### Navigation buttons ###
-# st.markdown("-----")
-nav_prev, nav_next = st.columns(2, vertical_alignment='bottom')
-with nav_prev:
-    st.page_link("views/user_login.py", label="Voltar")
-with nav_next:
-    st.page_link("views/press_mentions_page.py", label="Avançar",)
+    #### Navigation buttons ###
+    # st.markdown("-----")
+    nav_prev, nav_next = st.columns(2, vertical_alignment='bottom')
+    with nav_prev:
+        st.page_link("views/user_login.py", label="Voltar")
+    with nav_next:
+        st.page_link("views/press_mentions_page.py", label="Avançar",)

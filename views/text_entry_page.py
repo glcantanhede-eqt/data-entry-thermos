@@ -51,11 +51,10 @@ if save_text:
     st.session_state["text_pos"]= dict(press=st.session_state['_pos_press'], dig=st.session_state['_pos_dig'])
     st.session_state["text_warn"]= dict(press=st.session_state['_warn_press'], dig=st.session_state['_warn_dig'])
 
-
-#### Navigation buttons ###
-# st.markdown("-----")
-nav_prev, nav_next = st.columns(2, vertical_alignment='bottom')
-with nav_prev:
-    st.page_link("views/press_mentions_page.py", label="Voltar")
-with nav_next:
-    st.page_link("views/data_review_page.py", label="Avançar",)
+    #### Navigation buttons ###
+    # st.markdown("-----")
+    nav_prev, nav_next = st.columns(2, vertical_alignment='bottom')
+    with nav_prev:
+        st.page_link("views/press_mentions_page.py", label="Voltar")
+    with nav_next:
+        st.page_link("views/data_review_page.py", label="Avançar",)
