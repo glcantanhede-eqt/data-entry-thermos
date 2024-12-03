@@ -126,7 +126,7 @@ try:
             rows = dbc.run_insert(conn,'raw_data', dict_insert)
             st.success("Dados enviados com sucesso! Você já pode fechar esta página.")
             time.sleep(1)
-            # conn.auth.sign_out()
+            conn.auth.sign_out()
     
 
 except Exception as ex:
