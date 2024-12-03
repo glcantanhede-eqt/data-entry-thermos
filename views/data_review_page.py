@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import control.db_connection as dbc
 import control.misc_funcs as misc
+import time
 
 ts_start = None
 if 'ts_start' in st.session_state.keys():
@@ -124,7 +125,9 @@ try:
         if button_submit:
             rows = dbc.run_insert(conn,'raw_data', dict_insert)
             st.success("Dados enviados com sucesso! Você já pode fechar esta página.")
-        #conn.auth.sign_out()
+            time.sleep(3)
+            conn.auth.sign_out()
+    
 
 except Exception as ex:
     st.write("Erro ao processar dados, tente novamente.")
