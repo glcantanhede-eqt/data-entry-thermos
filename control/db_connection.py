@@ -5,7 +5,6 @@ import asyncio
 
 
 # Initialize connection.
-@st.cache_data
 def init_connection():
     opts = ClientOptions().replace(schema="data_entry")
     url = st.secrets["SUPABASE_URL"]
