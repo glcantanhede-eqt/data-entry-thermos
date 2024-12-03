@@ -5,7 +5,6 @@ import asyncio
 
 
 # Initialize connection.
-@st.cache_resource
 def init_connection():
     opts = ClientOptions().replace(schema="data_entry")
     url = st.secrets["SUPABASE_URL"]
@@ -20,12 +19,11 @@ async def log_in(_conn, credentials):
 
 # Perform query.
 # Uses st.cache_resource to only rerun when the query changes or after 10 min.
-@st.cache_resource(ttl=600)
+
 def run_select(_conn, _table_name, atributes):
     return _conn.table(_table_name).select(atributes).execute()
 
 # Perform insert.
-@st.cache_resource(ttl=600)
 def run_insert(_conn, _table_name, values):
     return _conn.table(_table_name).insert(values, returning='minimal').execute()
 
