@@ -28,7 +28,7 @@ with open('style.css') as f:
 curr_user = None
 user_data = None
 try:
-    curr_user = conn.auth.get_user()
+    curr_user = conn.auth.get_session()
     user_data = curr_user.user.user_metadata
 except:
     st.write("Erro ao recuperar dados do usuário, tente logar novamente.")
@@ -126,7 +126,7 @@ try:
             rows = dbc.run_insert(conn,'raw_data', dict_insert)
             st.success("Dados enviados com sucesso! Você já pode fechar esta página.")
             time.sleep(1)
-            conn.auth.sign_out()
+            # conn.auth.sign_out()
     
 
 except Exception as ex:

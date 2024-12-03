@@ -32,9 +32,10 @@ else:
         if btn_login:
             try:
                 response = conn.auth.sign_in_with_password(dict(email=email_user, password=pwd_user))
-                time.sleep(3)
+                # st.session_state['__conn'] = conn
+                time.sleep(2)
                 st.write(f"## Bem vindo(a), :blue[{response.user.user_metadata["first_name"]}]!")
-                st.session_state['__conn'] = conn
+                
             except Exception as e:
                 st.write("Erro ao tentar fazer login")
                 e
