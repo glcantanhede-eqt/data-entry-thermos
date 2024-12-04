@@ -6,17 +6,17 @@ st.logo("https://www.equatorialenergia.com.br/wp-content/themes/equatorial-energ
 st.set_page_config(page_title="Termômetro Reputacional", page_icon=":thermometer:", layout="centered", initial_sidebar_state="collapsed")
 
 ### Disabling the streamlit menu on production
-styles = {
-        "nav": {
-            "background-color": "white",
-            "display": "flex",
+# styles = {
+#         "nav": {
+#             "background-color": "white",
+#             "display": "flex",
             
-            "height": ".01rem"
-        },
-    }
-options = {
-    'show_menu': False
-}#####
+#             "height": ".01rem"
+#         },
+#     }
+# options = {
+#     'show_menu': False
+# }#####
 
 ### Customizing the CSS, old style
 with open('style.css') as f:
@@ -41,6 +41,6 @@ pages = {
     }
 
 ### Setting up the app navigation 
-pg = st.navigation(pages, styles=styles, options=options)
+pg = st.navigation(pages, position='hidden')
 
 pg.run()

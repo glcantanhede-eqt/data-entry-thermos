@@ -1,3 +1,9 @@
 [theme]
 base="light"
 primaryColor="#0c0cf5"
+
+
+[client]
+showErrorDetails = false
+toolbarMode = "viewer"
+showSidebarNavigation = false
