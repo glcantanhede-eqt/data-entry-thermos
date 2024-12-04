@@ -1,14 +1,28 @@
 import streamlit as st
 # Imagem bg pra usar -> https://energiaemdia.equatorialenergia.com.br/img/bg.webp
-#with st.sidebar:
-# st.logo("https://energiaemdia.equatorialenergia.com.br/img/logo-equatorial.png")
 st.logo("https://www.equatorialenergia.com.br/wp-content/themes/equatorial-energia-child/img/logo-blue.png")
+
 #st.set_page_config(page_title="Termômetro Reputacional", page_icon=":thermometer:", layout="wide", initial_sidebar_state="expanded") # makes the widgets expand to the full lenght of the screen almost
 st.set_page_config(page_title="Termômetro Reputacional", page_icon=":thermometer:", layout="centered", initial_sidebar_state="collapsed")
 
+### Disabling the streamlit menu on production
+styles = {
+        "nav": {
+            "background-color": "white",
+            "display": "flex",
+            
+            "height": ".01rem"
+        },
+    }
+options = {
+    'show_menu': False
+}#####
+
+### Customizing the CSS, old style
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
+### Setting up the pages
 pages = {
     "Início":[
         st.Page("./views/landing_page.py", title="Instruções", default=True, icon='📖'),
@@ -26,6 +40,7 @@ pages = {
     
     }
 
-pg = st.navigation(pages)
+### Setting up the app navigation 
+pg = st.navigation(pages, styles=styles, options=options)
 
 pg.run()
