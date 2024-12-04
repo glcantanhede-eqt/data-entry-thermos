@@ -34,15 +34,16 @@ text-decoration: underline;
 
 #page-container {
     position: sticky;
-    min-height: 100%; /*10vh*/
+    min-height: 0%; /*10vh*/
 }
 
 .footer {
 position: relative;
 left: 0;
+right: 600px;
 top:450px;
 bottom: 0;
-width: 100%;
+width: 80%;
 background-color: transparent;
 color: #808080; /* theme's text color hex code at 50 percent brightness*/
 text-align: left; /* you can replace 'left' with 'center' or 'right' if you want*/
