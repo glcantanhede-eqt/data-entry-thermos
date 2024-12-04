@@ -8,16 +8,16 @@ st.logo("https://www.equatorialenergia.com.br/wp-content/themes/equatorial-energ
 st.set_page_config(page_title="Termômetro Reputacional", page_icon=":thermometer:", layout="centered",) # initial_sidebar_state="collapsed")
 
 ### Disabling the streamlit menu on production
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            footer:after {
-                content: 'Gerência Corporativa de Comunicação Externa, Marketing e Sustentabilidade'}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+# hide_st_style = """
+#             <style>
+#             #MainMenu {visibility: hidden;}
+#             footer {visibility: hidden;}
+#             header {visibility: hidden;}
+#             footer:after {
+#                 content: 'Gerência Corporativa de Comunicação Externa, Marketing e Sustentabilidade'}
+#             </style>
+#             """
+# st.markdown(hide_st_style, unsafe_allow_html=True)
 
 ### Customizing the CSS, old style
 with open('style.css') as f:

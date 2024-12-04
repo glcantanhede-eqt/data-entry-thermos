@@ -3,6 +3,24 @@
 img[data-testid="stLogo"] {
     height: 3rem;
 }
+
+/* Hiding st branding and menus from user */
+a._container_gzau3_1._viewerBadge_nim44_23 {
+    visibility: hidden;
+}
+div._profileContainer_gzau3_53{
+    visibility: hidden;
+}
+#MainMenu {visibility: hidden;}
+footer {
+    visibility: hidden;
+}
+header {
+    visibility: hidden;
+}
+footer:after {
+    content: 'Gerência Corporativa de Comunicação Externa, Marketing e Sustentabilidade';
+}
 /*img.stLogo.st-emotion-cache-173tlbm.eczjsme7 {
     background-image: url(https://grupoequatorialenergia-my.sharepoint.com/:i:/r/personal/gabriel_cantanhede_equatorialenergia_com_br/Documents/logo_azul.png?csf=1&web=1&e=qynVhY);
     background-image: url(../assets/logo_azul.png);
