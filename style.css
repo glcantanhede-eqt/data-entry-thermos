@@ -12,15 +12,42 @@ div._profileContainer_gzau3_53{
     visibility: hidden;
 }
 #MainMenu {visibility: hidden;}
-footer {
-    visibility: hidden;
-}
 header {
     visibility: hidden;
 }
-footer:after {
-    content: 'Gerência Corporativa de Comunicação Externa, Marketing e Sustentabilidade';
+footer {
+    visibility: hidden;
 }
+
+/* Styling my custom footer */
+a:link , a:visited{
+    color: hsl(239, 100%, 70%);  /* theme's text color hex code at 75 percent brightness*/
+    background-color: transparent;
+    text-decoration: none;
+    }
+    
+a:hover,  a:active {
+color: #0283C3; /* theme's primary color*/
+background-color: transparent;
+text-decoration: underline;
+}
+
+#page-container {
+    position: sticky;
+    min-height: 100%; /*10vh*/
+}
+
+.footer {
+position: relative;
+left: 0;
+top:450px;
+bottom: 0;
+width: 100%;
+background-color: transparent;
+color: #808080; /* theme's text color hex code at 50 percent brightness*/
+text-align: center; /* you can replace 'left' with 'center' or 'right' if you want*/
+}
+
 /*img.stLogo.st-emotion-cache-173tlbm.eczjsme7 {
     background-image: url(https://grupoequatorialenergia-my.sharepoint.com/:i:/r/personal/gabriel_cantanhede_equatorialenergia_com_br/Documents/logo_azul.png?csf=1&web=1&e=qynVhY);
     background-image: url(../assets/logo_azul.png);

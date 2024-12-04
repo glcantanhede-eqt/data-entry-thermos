@@ -7,17 +7,6 @@ st.logo("https://www.equatorialenergia.com.br/wp-content/themes/equatorial-energ
 #st.set_page_config(page_title="Termômetro Reputacional", page_icon=":thermometer:", layout="wide", initial_sidebar_state="expanded") # makes the widgets expand to the full lenght of the screen almost
 st.set_page_config(page_title="Termômetro Reputacional", page_icon=":thermometer:", layout="centered",) # initial_sidebar_state="collapsed")
 
-### Disabling the streamlit menu on production
-# hide_st_style = """
-#             <style>
-#             #MainMenu {visibility: hidden;}
-#             footer {visibility: hidden;}
-#             header {visibility: hidden;}
-#             footer:after {
-#                 content: 'Gerência Corporativa de Comunicação Externa, Marketing e Sustentabilidade'}
-#             </style>
-#             """
-# st.markdown(hide_st_style, unsafe_allow_html=True)
 
 ### Customizing the CSS, old style
 with open('style.css') as f:
@@ -42,6 +31,19 @@ pages = {
     }
 
 ### Setting up the app navigation 
+
+ft = """
+<div id="page-container">
+
+<div class="footer">
+<p style='font-size: 0.875em;'> Gerência de Comunicação Externa, Marketing e Sustentabilidade<br 'style= top:3px;'>
+Feito com <img src="https://em-content.zobj.net/source/skype/289/red-heart_2764-fe0f.png" alt="heart" height= "10"/> por <a href="mailto:gabriel.cantanhede@equatorialenergia.com.br"> Gabriel Cantanhede</a></p>
+</div>
+
+</div>
+"""
+st.write(ft, unsafe_allow_html=True)
+
 pg = st.navigation(pages, position='hidden')
 
 pg.run()
