@@ -36,7 +36,7 @@ ft = """
 <div id="page-container">
 
 <div class="footer">
-<p style='font-size: 0.875em;'> Gerência de Comunicação Externa, Marketing e Sustentabilidade<br 'style= top:3px;'>
+<p style='font-size: 0.875em;'> Gerência Corporativa de Comunicação Externa, Marketing e Sustentabilidade<br 'style= top:3px;'>
 Feito com <img src="https://em-content.zobj.net/source/skype/289/red-heart_2764-fe0f.png" alt="heart" height= "10"/> por <a href="mailto:gabriel.cantanhede@equatorialenergia.com.br"> Gabriel Cantanhede</a></p>
 </div>
 
