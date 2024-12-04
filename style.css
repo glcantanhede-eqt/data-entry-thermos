@@ -45,7 +45,7 @@ bottom: 0;
 width: 100%;
 background-color: transparent;
 color: #808080; /* theme's text color hex code at 50 percent brightness*/
-text-align: center; /* you can replace 'left' with 'center' or 'right' if you want*/
+text-align: left; /* you can replace 'left' with 'center' or 'right' if you want*/
 }
 
 /*img.stLogo.st-emotion-cache-173tlbm.eczjsme7 {
