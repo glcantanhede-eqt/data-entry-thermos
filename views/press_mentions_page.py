@@ -24,8 +24,8 @@ with st.container(border=True):
         st.write("Negativas:", press_negative)
 
 
-mask_show_button = not(press_positive and press_negative)
-save_press = st.button("Salvar", disabled=mask_show_button)
+# mask_show_button = not(press_positive and press_negative)
+save_press = st.button("Salvar")#, disabled=mask_show_button)
 
 if save_press:
     st.session_state['press_mentions'] = {

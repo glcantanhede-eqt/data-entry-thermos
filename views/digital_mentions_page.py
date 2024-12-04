@@ -30,9 +30,9 @@ with st.container(border=True):
         st.write("Negativas:", dig_negative)
 
 
-mask_show_button = not(dig_positive and dig_neutral and dig_negative)
+# mask_show_button = not(dig_positive and dig_neutral and dig_negative)
 
-save_dig = st.button("Salvar", disabled=mask_show_button)
+save_dig = st.button("Salvar",)# disabled=mask_show_button)
 
 if save_dig:
     st.session_state['dig_mentions'] = {
