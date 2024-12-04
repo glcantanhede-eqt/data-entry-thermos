@@ -33,7 +33,7 @@ text-decoration: underline;
 }
 
 #page-container {
-    position: sticky;
+    position: relative;
     min-height: 0%; /*10vh*/
 }
 
