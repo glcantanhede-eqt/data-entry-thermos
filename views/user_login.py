@@ -2,6 +2,7 @@ import streamlit as st
 import control.db_connection as dbc
 import time
 from datetime import datetime, timezone
+from supabase import AuthApiError
 
 conn = None
 if "__conn" not in st.session_state:
