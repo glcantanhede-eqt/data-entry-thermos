@@ -45,5 +45,5 @@ else:
                     st.page_link("views/digital_mentions_page.py", label="Avançar",)
 
                 
-            except AuthError as auth_error:
+            except "AuthApiError" as auth_error:
                 st.error("Erro ao tentar fazer login. Por favor, tente novamente.")   
