@@ -130,8 +130,10 @@ try:
     
 
 except Exception as ex:
-    st.write("Erro ao processar dados, tente novamente.")
-    st.write(ex) # OG debugging
+    st.error("Erro ao processar dados, tente novamente.")
+    time.sleep(3)
+    st.switch_page("views/user_login.py")
+    # st.write(ex) # OG debugging
 
 
 
