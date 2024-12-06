@@ -4,6 +4,7 @@ import time
 from datetime import datetime, timezone
 from supabase import AuthApiError
 
+
 conn = None
 if "__conn" not in st.session_state:
     conn = dbc.init_connection()
@@ -19,6 +20,14 @@ if curr_user:
     st.write(f"## Bem vindo(a), :blue[{curr_user.user.user_metadata["first_name"]}]!")
     with st.container(border=True):
         st.markdown("#### Prossiga para a próxima página ->")
+
+    #### Navigation buttons ###
+    # st.markdown("-----")
+    nav_prev_logged, nav_next_logged = st.columns(2, vertical_alignment='bottom')
+    with nav_prev_logged:
+        st.page_link("views/landing_page.py", label="Voltar")
+    with nav_next_logged:
+        st.page_link("views/digital_mentions_page.py", label="Avançar",)
 
 else:
     #######
@@ -36,7 +45,7 @@ else:
                 # st.session_state['__conn'] = conn
                 time.sleep(2)
                 st.write(f"## Bem vindo(a), :blue[{response.user.user_metadata["first_name"]}]!")
-
+                
                 #### Navigation buttons ###
                 # st.markdown("-----")
                 nav_prev, nav_next = st.columns(2, vertical_alignment='bottom')
