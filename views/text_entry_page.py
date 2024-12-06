@@ -19,13 +19,13 @@ with st.container(border=True):
         with col1:
             txt_pos = st.text_area(
                 ":green-background[Pontos Positivos]",
-                curr_text_pos['dig'],max_chars=90, placeholder=placeholder_txt, key="_pos_dig"
+                curr_text_pos['dig'],max_chars=80, placeholder=placeholder_txt, key="_pos_dig"
             )
 
         with col2:
             txt_warn = st.text_area(
                 ":orange-background[Pontos de Atenção]",
-                curr_text_warn['dig'],max_chars=180, placeholder=placeholder_txt, key="_warn_dig"
+                curr_text_warn['dig'],max_chars=160, placeholder=placeholder_txt, key="_warn_dig"
             )
 
 
@@ -34,13 +34,13 @@ with st.container(border=True):
         with col1:
             txt_pos = st.text_area(
                 ":green-background[Pontos Positivos]",
-                curr_text_pos['press'],max_chars=90, placeholder=placeholder_txt, key="_pos_press"
+                curr_text_pos['press'],max_chars=80, placeholder=placeholder_txt, key="_pos_press"
             )
 
         with col2:
             txt_warn = st.text_area(
                 ":orange-background[Pontos de Atenção]",
-                curr_text_warn['press'],max_chars=180, placeholder=placeholder_txt, key="_warn_press"
+                curr_text_warn['press'],max_chars=160, placeholder=placeholder_txt, key="_warn_press"
             )
     
 mask_show_button = not(txt_pos and txt_warn)
