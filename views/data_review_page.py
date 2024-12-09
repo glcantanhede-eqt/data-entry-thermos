@@ -95,8 +95,9 @@ try:
                 st.markdown("**Saudabilidade**")
                 st.markdown(f"<h1 style='color:{styled_val_dig}'>{val_saud[0]:.2f} %</h1>",unsafe_allow_html=True)
             
-            st.markdown(f":green-background[Pontos Positivos: {text_pos['dig']}]")
-            st.markdown(f":orange-background[Pontos de Atenção: {text_warn['dig']}]")
+            st.markdown(f""":green-background[Pontos Positivos:<br> {"<br>".join(text for text in text_pos['dig'].split(';'))}]""", unsafe_allow_html=True)
+            st.markdown(f""":orange-background[Pontos de Atenção:<br> {"<br>".join(text for text in text_warn['dig'].split(';'))}]""", unsafe_allow_html=True)
+        
         
         with st.container(border=True):    
             st.markdown("## :newspaper: Imprensa")
@@ -108,8 +109,9 @@ try:
                 st.markdown("**Favorabilidade**")
                 st.markdown(f"<h1 style='color:{styled_val_press}'>{val_fav[0]:.2f} %</h1>",unsafe_allow_html=True)
 
-            st.markdown(f":green-background[Pontos Positivos: {text_pos['press']}]")
-            st.markdown(f":orange-background[Pontos de Atenção: {text_warn['press']}]")
+            st.markdown(f""":green-background[Pontos Positivos:<br> {"<br>".join(text for text in text_pos['press'].split(';'))}]""", unsafe_allow_html=True)
+            st.markdown(f""":orange-background[Pontos de Atenção:<br> {"<br>".join(text for text in text_warn['press'].split(';'))}]""", unsafe_allow_html=True)
+        
         with st.container(border=True):
             col5, col6 = st.columns([0.7, 0.3], vertical_alignment='center')
             with col5:
@@ -131,7 +133,7 @@ try:
 
 except Exception as ex:
     st.error("Erro ao processar dados, tente novamente.")
-    time.sleep(3)
+    time.sleep(5)
     st.switch_page("views/user_login.py")
     # st.write(ex) # OG debugging
 
