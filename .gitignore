@@ -7,6 +7,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# Dev container from Streamlit Cloud
+.devcontainer
+
 # Secrets file
 */secrets.toml
 
@@ -14,6 +17,7 @@ venv.bak/
 *.code-workspace
 
 # Byte-compiled / optimized / DLL files
+*__pycache__/
 __pycache__/
 *.py[cod]
 *$py.class
@@ -43,6 +47,8 @@ cover/
 pip-log.txt
 pip-delete-this-directory.txt
 
+# Files to be temporarily ignored
+*/*/__*.py
 
 # Distribution / packaging
 .Python
