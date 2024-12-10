@@ -1,7 +1,7 @@
 FROM python:3.12.5
 
 # Expose port you want your app on
-EXPOSE 5900
+EXPOSE 8080
 
 # Upgrade pip and install requirements
 COPY requirements.txt requirements.txt
@@ -19,4 +19,4 @@ COPY main_app.py main_app.py
 WORKDIR .
 
 # Run
-ENTRYPOINT [“streamlit”, “run”, “main_app.py”, “–server.port=5900”, “–server.address=0.0.0.0”]
+ENTRYPOINT [“streamlit”, “run”, “main_app.py”, “–server.port=8080”, “–server.address=0.0.0.0”]
