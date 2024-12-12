@@ -30,8 +30,10 @@ user_data = None
 try:
     curr_user = conn.auth.get_session()
     user_data = curr_user.user.user_metadata
-except:
+except Exception as ex_user:
     st.write("Erro ao recuperar dados do usuário, tente logar novamente.")
+    time.sleep(5)
+    st.switch_page("views/user_login.py")
 
 ### Handling the thermometer data 
 if 'text_warn' in st.session_state.keys():
