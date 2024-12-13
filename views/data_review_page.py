@@ -3,6 +3,7 @@ import pandas as pd
 import control.db_connection as dbc
 import control.misc_funcs as misc
 import time
+import numpy as np
 
 ts_start = None
 if 'ts_start' in st.session_state.keys():
@@ -44,11 +45,13 @@ if 'text_warn' in st.session_state.keys():
     text_warn = st.session_state['text_warn']
 
     # Calculating the saudability and configuring the string format
-    val_saud = (dig_mentions[['dig_pos', 'dig_neu']].T.sum()/dig_mentions.T.sum())*100
+    # np.nan_to_num needed in case there's no clipping (it fucking happens, really)
+    val_saud = np.nan_to_num((dig_mentions[['dig_pos', 'dig_neu']].T.sum()/dig_mentions.T.sum())*100)
     styled_val_dig = misc.pick_color(val_saud[0])
 
     # Calculating the favorability and configuring the string format
-    val_fav = (press_mentions['press_pos'].T.sum()/press_mentions.T.sum())*100
+    # np.nan_to_num needed in case there's no clipping (it fucking happens, really)
+    val_fav = np.nan_to_num((press_mentions['press_pos'].T.sum()/press_mentions.T.sum())*100)
     styled_val_press = misc.pick_color(val_fav[0])
 
     # Calculating the overall favorability for the brand

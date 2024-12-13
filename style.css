@@ -11,12 +11,16 @@ a._container_gzau3_1._viewerBadge_nim44_23 {
 div._profileContainer_gzau3_53{
     visibility: hidden;
 }
-#MainMenu {visibility: hidden;}
+#MainMenu {visibility: hidden;} /* hides the sidebar menu */ 
+
+header[data-testid=stHeader] { /*! IMPORTANT ! This here hides the streamlit runtime header, hiding unwanted interactions from users*/
+    visibility: hidden;
+}
 header {
     visibility: hidden;
 }
 footer {
-    visibility: hidden;
+    visibility: visible;
 }
 
 /* Styling my custom footer */
