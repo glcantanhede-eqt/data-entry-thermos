@@ -32,7 +32,7 @@ with st.container(border=True):
 
 # mask_show_button = not(dig_positive and dig_neutral and dig_negative)
 
-save_dig = st.button("Salvar",)# disabled=mask_show_button)
+save_dig = st.button("Salvar", icon=":material/save:")# disabled=mask_show_button)
 
 if save_dig:
     st.session_state['dig_mentions'] = {

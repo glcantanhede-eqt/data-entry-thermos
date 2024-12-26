@@ -25,7 +25,7 @@ with st.container(border=True):
 
 
 # mask_show_button = not(press_positive and press_negative)
-save_press = st.button("Salvar")#, disabled=mask_show_button)
+save_press = st.button("Salvar", icon=":material/save:")#, disabled=mask_show_button)
 
 if save_press:
     st.session_state['press_mentions'] = {

@@ -2,8 +2,7 @@
 base="light"
 primaryColor="#0c0cf5"
 
-
+# Essential part to obfuscating the branding and menus of streamlit from users
 [client]
-showErrorDetails = false
-toolbarMode = "viewer"
+toolbarMode = "minimal"
 showSidebarNavigation = false

@@ -4,52 +4,54 @@ st.markdown("## :pencil: :blue[Observações]")
 st.markdown("Insira nos campos abaixo observações relevantes do dia")
 
 placeholder_txt = "Insira aqui seu texto. Pontos diferentes devem ser separados por ponto e vírgula;"
+curr_text_pos = dict(press=None, dig=None)
+curr_text_warn = dict(press=None, dig=None)
+
 
 if ('text_pos', 'text_warn') in st.session_state.keys():
     curr_text_pos = st.session_state['text_pos']
     curr_text_warn = st.session_state['text_warn']
-else:
-    curr_text_pos = dict(press=None, dig=None)
-    curr_text_warn = dict(press=None, dig=None)
+
 
 
 with st.container(border=True):
     with st.expander(":iphone: Digital"):
         col1, col2 = st.columns(2)
         with col1:
-            txt_pos = st.text_area(
-                ":green-background[Pontos Positivos]",
-                curr_text_pos['dig'],max_chars=80, placeholder=placeholder_txt, key="_pos_dig"
+            dig_txt_pos = st.text_area(
+                label=":green-background[Pontos Positivos]",
+                value=curr_text_pos['dig'],max_chars=80, placeholder=placeholder_txt, key="_pos_dig"
             )
 
         with col2:
-            txt_warn = st.text_area(
-                ":orange-background[Pontos de Atenção]",
-                curr_text_warn['dig'],max_chars=160, placeholder=placeholder_txt, key="_warn_dig"
+            dig_txt_warn = st.text_area(
+                label=":orange-background[Pontos de Atenção]",
+                value=curr_text_warn['dig'],max_chars=160, placeholder=placeholder_txt, key="_warn_dig"
             )
 
 
     with st.expander(":newspaper: Imprensa"):
         col1, col2 = st.columns(2)
         with col1:
-            txt_pos = st.text_area(
-                ":green-background[Pontos Positivos]",
-                curr_text_pos['press'],max_chars=80, placeholder=placeholder_txt, key="_pos_press"
+            press_txt_pos = st.text_area(
+                label=":green-background[Pontos Positivos]",
+                value=curr_text_pos['press'],max_chars=80, placeholder=placeholder_txt, key="_pos_press"
             )
 
         with col2:
-            txt_warn = st.text_area(
-                ":orange-background[Pontos de Atenção]",
-                curr_text_warn['press'],max_chars=160, placeholder=placeholder_txt, key="_warn_press"
+            press_txt_warn = st.text_area(
+                label=":orange-background[Pontos de Atenção]",
+                value=curr_text_warn['press'],max_chars=160, placeholder=placeholder_txt, key="_warn_press"
             )
-    
-mask_show_button = not(txt_pos and txt_warn)
 
-save_text = st.button("Salvar", disabled=mask_show_button)
+# This here makes sure the user has at least typed something in the text boxes before pressing save    
+mask_show_button = (press_txt_pos == "") or (press_txt_warn == "") or (dig_txt_pos == "") or (dig_txt_warn == "")
+
+save_text = st.button("Salvar", disabled=mask_show_button, icon=":material/save:")
 
 if save_text:
-    st.session_state["text_pos"]= dict(press=st.session_state['_pos_press'], dig=st.session_state['_pos_dig'])
-    st.session_state["text_warn"]= dict(press=st.session_state['_warn_press'], dig=st.session_state['_warn_dig'])
+    st.session_state["text_pos"]= dict(press=press_txt_pos, dig=dig_txt_pos)
+    st.session_state["text_warn"]= dict(press=press_txt_warn, dig=dig_txt_warn)
 
     #### Navigation buttons ###
     # st.markdown("-----")

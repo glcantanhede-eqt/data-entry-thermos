@@ -1,47 +1,96 @@
-/* Logo */
-/* Suggested by Michael Hollander -> https://discuss.streamlit.io/t/st-logo-image-size/71085/6*/
-img[data-testid="stLogo"] {
-    height: 3rem;
-}
+/* div[data-testid=stSidebarCollapsedControl]{
+    padding: 0rem 1rem 0rem 0rem;
+} */
 
-/* Hiding st branding and menus from user */
-a._container_gzau3_1._viewerBadge_nim44_23 {
-    visibility: hidden;
+/* This is a hack I found online to try to fix the broken layout while printing the app view into pdf, seems to not work  */
+/* div.page-break {
+        page-break-after: always;
+        page-break-inside: avoid;
+    } */
+
+img[data-testid="stLogo"] {
+    position: sticky;
+    height: 3rem;
+    padding-bottom: 10px;
+    /* background-size: 200px; */
+    background-repeat: no-repeat;
+    /* background-position: 1000px 20px; */
 }
-div._profileContainer_gzau3_53{
-    visibility: hidden;
-}
-#MainMenu {visibility: hidden;} /* hides the sidebar menu */ 
 
 header[data-testid=stHeader] { /*! IMPORTANT ! This here hides the streamlit runtime header, hiding unwanted interactions from users*/
-    visibility: hidden;
-}
-header {
-    visibility: hidden;
-}
-footer {
     visibility: visible;
+    background-image: linear-gradient(to right, #e84d0f, #1a008e);
+    min-height: 5rem;
 }
 
+/* This adds a background image to the body of the streamlit app */
+[data-testid="stAppViewContainer"] {
+    background-image:url(https://energiaemdia.equatorialenergia.com.br/img/bg.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll; 
+    /* min-width: 1152px; */
+    padding-top: 5em;
+}
+
+/* This helps me style the container box where all the interaction with the app happens */
+[data-testid="stMainBlockContainer"] {
+    background-color: #f7f7f7;
+    /* min-width: 1152px; */
+    min-width: 80%;
+    min-height: 50% fit-content;
+    border-radius: 2rem;
+    border: 3px solid #c6c9fd;
+    padding: 1% 3% 10% 3%;
+    border-left: 0.5rem solid #003A60 !important;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+}
+
+/* This lets me manipulate the aspects of the sidebar menu */
+div[data-testid="stSidebarContent"] {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    /* color: #1a008e; */
+    /* background-color: #e84d0f; */
+    /* visibility: hidden; */
+}
+
+
+
+/*header[data-testid=stNavSectionHeader] {
+    visibility: visible;
+}*/
+
+/*
+footer {/*
+    visibility: visible;
+    min-height: 5rem;
+    content: 'Texto';
+}*/
+
 /* Styling my custom footer */
+/*
 a:link , a:visited{
-    color: hsl(239, 100%, 70%);  /* theme's text color hex code at 75 percent brightness*/
+    color: hsl(239, 100%, 70%);  theme's text color hex code at 75 percent brightness
     background-color: transparent;
     text-decoration: none;
     }
     
 a:hover,  a:active {
-color: #0283C3; /* theme's primary color*/
+color: #0283C3; theme's primary color
 background-color: transparent;
 text-decoration: underline;
 }
 
 #page-container {
     position: relative;
-    min-height: 0%; /*10vh*/
+    min-height: 0%; was 10vh
 }
+*/
 
-.footer {
+
+/*.
+footer {
 position: relative;
 left: 0;
 right: 600px;
@@ -49,27 +98,33 @@ top:450px;
 bottom: 0;
 width: 80%;
 background-color: transparent;
-color: #808080; /* theme's text color hex code at 50 percent brightness*/
-text-align: left; /* you can replace 'left' with 'center' or 'right' if you want*/
+color: #808080;  theme's text color hex code at 50 percent brightness
+text-align: left;  you can replace 'left' with 'center' or 'right' if you want
 }
-
-/*img.stLogo.st-emotion-cache-173tlbm.eczjsme7 {
-    background-image: url(https://grupoequatorialenergia-my.sharepoint.com/:i:/r/personal/gabriel_cantanhede_equatorialenergia_com_br/Documents/logo_azul.png?csf=1&web=1&e=qynVhY);
-    background-image: url(../assets/logo_azul.png);
-    background-size: 200px;
-    background-repeat: no-repeat;
-    background-position: 4px 20px;
-}*/
+*/
 
 /* Vertical Block - Streamlit */
-
-/*
-div.stVerticalBlock.st-emotion-cache-1n76uvr.e1f1d6gn2 {
-    border: 1px solid #0901ff;
+div.st-emotion-cache-4uzi61.e1f1d6gn0{
+    border: 1px solid #6b6b6bb3;
+    border-radius: 8px;
+    /*box-shadow: 0 0.15rem 1.75rem 0 rgba(130, 131, 134, 0.094) !important;*/
+}
+/* this one changes the background color just for the textual data in the view_group and view_states pages */
+#root > div:nth-child(1) > div.withScreencast > div > div > section.stMain.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stMainBlockContainer.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div.stHorizontalBlock.st-emotion-cache-ocqkz7.e1f1d6gn5 > div:nth-child(1) > div > div > div > div{
+    border: 1px solid #000000;
     border-radius: 8px;
     padding: 5 5 5 5;
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
-}*/
+    /*box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;*/
+    background-color: #26c4fd41;
+}
+
+#root > div:nth-child(1) > div.withScreencast > div > div > section.stMain.st-emotion-cache-bm2z3a.ea3mdgi8 > div.stMainBlockContainer.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div.stHorizontalBlock.st-emotion-cache-ocqkz7.e1f1d6gn5 > div:nth-child(2) > div > div > div > div{
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 5 5 5 5;
+    /*box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;*/
+    background-color: #fdef2641;
+}
 
 /* Card */
 /* Adapted from https://startbootstrap.com/theme/sb-admin-2 */
@@ -86,7 +141,7 @@ box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
 /* Navi Buttons */
 a[data-testid="stPageLink-NavLink"]{
     background-color: #f7f7f7;
-    border: 1px solid #0901ff;
+    border: 1px solid #0901ff5d;
     border-radius: 8px;
     padding: 1% 40% 1% 40%;
     box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
@@ -108,10 +163,10 @@ text-transform: uppercase !important;
 }
 
 
-/* Move block container higher */
+/* Move block container higher
 div.block-container.css-18e3th9.egzxvld2 {
 margin-top: -5em;
-}
+} */
 
 
 /* Hide hamburger menu and footer */

@@ -2,7 +2,7 @@ import streamlit as st
 
 
 # Background image to use -> https://energiaemdia.equatorialenergia.com.br/img/bg.webp
-st.logo("https://www.equatorialenergia.com.br/wp-content/themes/equatorial-energia-child/img/logo-blue.png")
+st.logo("https://www.equatorialenergia.com.br/wp-content/themes/equatorial-energia-child/img/logo-white.png")
 
 #st.set_page_config(page_title="Termômetro Reputacional", page_icon=":thermometer:", layout="wide", initial_sidebar_state="expanded") # makes the widgets expand to the full lenght of the screen almost
 st.set_page_config(page_title="Termômetro Reputacional", page_icon=":thermometer:", layout="centered",) # initial_sidebar_state="collapsed")
