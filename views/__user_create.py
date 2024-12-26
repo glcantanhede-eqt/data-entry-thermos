@@ -1,5 +1,6 @@
 import streamlit as st
 import control.db_connection as dbc 
+import control.misc_funcs as misc
 import json
 
 

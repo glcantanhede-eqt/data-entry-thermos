@@ -131,7 +131,7 @@ try:
         
 
     check_ok = st.checkbox("Eu li os dados acima e confirmei que estão corretos.")
-    
+    # TODO implement this saving to db and signing out as a function with fragment decorator
     if check_ok:
         button_submit = st.button(icon=':material/save:', label="Enviar")
         # connecting to supabase and inserting data if the button is pressed
@@ -139,16 +139,17 @@ try:
             rows = dbc.run_insert(conn,'raw_data', dict_insert)
             st.success("Dados enviados com sucesso! Você já pode fechar esta página.")
             st.balloons()
-            time.sleep(2)
+            # time.sleep(2)
             conn.auth.sign_out()
     
-    # st.markdown("""**Copyright 2024 - Time Inteligência de Dados** <br>Gerência de Comunicação Externa, Marketing e Sustentabilidade <br>Diretoria de Clientes, Serviços e Inovação <br>**Grupo Equatorial**""", unsafe_allow_html=true)
+    # Lil way of writing a consistent footer
+    misc.write_footer()
 
 except Exception as ex:
     st.error("Erro ao processar dados, tente novamente.")
     time.sleep(5)
-    st.switch_page("views/user_login.py")
-    # st.write(ex) # OG debugging
+    # st.switch_page("views/user_login.py")
+    st.write(ex) # OG debugging
 
 
 

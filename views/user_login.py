@@ -1,5 +1,6 @@
 import streamlit as st
 import control.db_connection as dbc
+import control.misc_funcs as misc
 import time
 from datetime import datetime, timezone
 from supabase import AuthApiError
@@ -57,3 +58,6 @@ else:
                 
             except AuthApiError as auth_error:
                 st.error("Erro ao tentar fazer login. Por favor, tente novamente.")   
+
+# Lil way of writing a consistent footer
+misc.write_footer()

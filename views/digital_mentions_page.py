@@ -1,4 +1,5 @@
 import streamlit as st
+import control.misc_funcs as misc
 
 st.markdown("## :iphone: :blue[Termômetro Digital]")
 
@@ -49,3 +50,6 @@ if save_dig:
         st.page_link("views/user_login.py", label="Voltar")
     with nav_next:
         st.page_link("views/press_mentions_page.py", label="Avançar",)
+
+# Lil way of writing a consistent footer
+misc.write_footer()

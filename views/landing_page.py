@@ -1,5 +1,6 @@
 import streamlit as st
 from datetime import datetime, timezone
+import control.misc_funcs as misc
 
 
 if "ts_landing" not in st.session_state.keys():
@@ -20,3 +21,6 @@ nav_prev, nav_next = st.columns(2, vertical_alignment='bottom')
 #    st.page_link("views/data_review_page.py", label="Voltar", disabled=True)
 with nav_next:
     st.page_link("views/user_login.py", label="Avançar",)
+
+# Lil way of writing a consistent footer
+misc.write_footer()

@@ -1,4 +1,5 @@
 import streamlit as st
+import control.misc_funcs as misc
 
 st.markdown("## :pencil: :blue[Observações]")
 st.markdown("Insira nos campos abaixo observações relevantes do dia")
@@ -62,3 +63,7 @@ if save_text:
         st.page_link("views/press_mentions_page.py", label="Voltar")
     with nav_next:
         st.page_link("views/data_review_page.py", label="Avançar",)
+
+
+# Lil way of writing a consistent footer
+misc.write_footer()

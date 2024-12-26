@@ -38,7 +38,7 @@ header[data-testid=stHeader] { /*! IMPORTANT ! This here hides the streamlit run
     background-color: #f7f7f7;
     /* min-width: 1152px; */
     min-width: 80%;
-    min-height: 50% fit-content;
+    max-height: 80% fit-content;
     border-radius: 2rem;
     border: 3px solid #c6c9fd;
     padding: 1% 3% 10% 3%;
