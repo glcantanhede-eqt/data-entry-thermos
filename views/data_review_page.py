@@ -139,15 +139,15 @@ try:
             rows = dbc.run_insert(conn,'raw_data', dict_insert)
             st.success("Dados enviados com sucesso! Você já pode fechar esta página.")
             st.balloons()
-            # time.sleep(2)
-            # conn.auth.sign_out()
+            time.sleep(2)
+            conn.auth.sign_out()
     
     # st.markdown("""**Copyright 2024 - Time Inteligência de Dados** <br>Gerência de Comunicação Externa, Marketing e Sustentabilidade <br>Diretoria de Clientes, Serviços e Inovação <br>**Grupo Equatorial**""", unsafe_allow_html=true)
 
 except Exception as ex:
     st.error("Erro ao processar dados, tente novamente.")
     time.sleep(5)
-    # st.switch_page("views/user_login.py")
+    st.switch_page("views/user_login.py")
     # st.write(ex) # OG debugging
 
 
