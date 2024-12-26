@@ -3,6 +3,7 @@ import pandas as pd
 import control.db_connection as dbc
 import control.misc_funcs as misc
 import time
+from datetime import datetime
 import numpy as np
 
 ts_start = None
@@ -138,7 +139,10 @@ try:
         if button_submit:
             rows = dbc.run_insert(conn,'raw_data', dict_insert)
             st.success("Dados enviados com sucesso! Você já pode fechar esta página.")
-            st.balloons()
+            if datetime.today().month == 12:
+                st.snow()
+            else:
+                st.balloons()
             # time.sleep(2)
             conn.auth.sign_out()
     
