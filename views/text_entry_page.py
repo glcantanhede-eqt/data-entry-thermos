@@ -44,10 +44,12 @@ with st.container(border=True):
                 value=curr_text_warn['press'],max_chars=160, placeholder=placeholder_txt, key="_warn_press"
             )
 
-# This here makes sure the user has at least typed something in the text boxes before pressing save    
-mask_show_button = (press_txt_pos == "") or (press_txt_warn == "") or (dig_txt_pos == "") or (dig_txt_warn == "")
+# This here makes sure the user has at least typed something in the text boxes before pressing save
+# TODO Not working in prod, for some reason the logic isn't evaluating
+# TODO try using on_change property to set some boolean vars and use them in the mask instead
+bool_show_button = (press_txt_pos == "") or (press_txt_warn == "") or (dig_txt_pos == "") or (dig_txt_warn == "")
 
-save_text = st.button("Salvar", disabled=mask_show_button, icon=":material/save:")
+save_text = st.button("Salvar", disabled=bool_show_button, icon=":material/save:")
 
 if save_text:
     st.session_state["text_pos"]= dict(press=press_txt_pos, dig=dig_txt_pos)
