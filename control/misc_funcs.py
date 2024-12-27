@@ -20,11 +20,12 @@ def pick_color(value):
     else:
         return "#00b509" #style.format(color_pick="#00b509")
 
-def write_footer():
+def write_footer(logo_style='blue'):
+    img_link = f"https://www.equatorialenergia.com.br/wp-content/themes/equatorial-energia-child/img/logo-{logo_style}.png"
     st.divider()
     st.markdown(
-        """:copyright: _Copyright 2024 - Time Inteligência de Dados_ <br>
+        f""":copyright: _Copyright 2024 - Time Inteligência de Dados_ <br>
         Gerência de Comunicação Externa, Marketing e Sustentabilidade <br>
-        Diretoria de Clientes, Serviços e Inovação <br>
-        **:blue[Grupo Equatorial]**""",
+        Diretoria de Clientes, Serviços e Inovação <br> <br>
+        <img src={img_link} alt='logo_eqtl' width=150px>""",
         unsafe_allow_html=True)
